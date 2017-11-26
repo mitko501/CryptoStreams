@@ -4,7 +4,7 @@
 #include "block_cipher.h"
 
 #include <algorithm>
-#include <eacirc-core/memory.h>
+#include <memory.h>
 
 #include "ciphers/tea/tea.h"
 #include "ciphers/aes/aes.h"

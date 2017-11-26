@@ -22,6 +22,10 @@
 #include <streams/block/block_stream.h>
 #endif
 
+#ifdef BUILD_prngs
+#include <streams/prngs/prng_stream.h>
+#endif
+
 namespace _impl {
 
     template <std::uint8_t value>

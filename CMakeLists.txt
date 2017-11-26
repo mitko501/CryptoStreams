@@ -15,7 +15,7 @@ include(build_stream)
 
 # === Set CXX flags ===
 if(CMAKE_COMPILER_IS_GNUCXX OR ${CMAKE_CXX_COMPILER_ID} MATCHES "Clang")
-    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-std=c++11> -Wall -Wextra)
+    add_compile_options($<$<COMPILE_LANGUAGE:CXX>:-std=c++14> -Wall -Wextra)
     add_compile_options(-fdiagnostics-color)
 elseif (MSVC AND (MSVC_VERSION GREATER 1700))
     # nothing special yet
@@ -42,6 +42,7 @@ add_subdirectory(eacirc-core)
 add_subdirectory(streams/estream)
 add_subdirectory(streams/sha3)
 add_subdirectory(streams/block)
+add_subdirectory(streams/prngs)
 
 ## Executables
 
@@ -53,7 +54,7 @@ option(BUILD_testsuite "Build all tests." OFF)
 if (NOT BUILD_testsuite)
 
     # === eacirc generator executable
-    add_executable(eacirc-streams main.cc generator)
+    add_executable(eacirc-streams main.cc generator streams/prngs/prng_generator.cc streams/prngs/prng_generator.h)
 
     set_target_properties(eacirc-streams PROPERTIES
             LINKER_LANGUAGE CXX
@@ -64,6 +65,7 @@ if (NOT BUILD_testsuite)
     build_stream(eacirc-streams estream)
     build_stream(eacirc-streams sha3)
     build_stream(eacirc-streams block)
+    build_stream(eacirc-streams prngs)
 
 else()
     enable_testing()
@@ -93,6 +95,7 @@ else()
     build_stream(testsuite estream)
     build_stream(testsuite sha3)
     build_stream(testsuite block)
+    build_stream(testsuite prngs)
     add_definitions(-DBUILD_testsuite)
 
 endif()

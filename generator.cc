@@ -18,7 +18,7 @@ static std::ifstream open_config_file(std::string path) {
 
 static std::string out_name(json const& config) {
     std::stringstream ss;
-    std::string a = config.at("algorithm");
+    std::string a = config.find("algorithm") == config.end() ? config.at("name") : config.at("algorithm");
     ss << a << "_r";
     ss << std::setw(2) << std::setfill('0') << std::size_t(config.at("round"));
     ss << "_b" << config.at("block-size");

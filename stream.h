@@ -1,7 +1,7 @@
 #pragma once
 
 #include <eacirc-core/json.h>
-#include <eacirc-core/memory.h>
+#include <memory.h>
 #include <eacirc-core/view.h>
 #include <eacirc-core/dataset.h>
 #include <eacirc-core/logger.h>
