@@ -23,10 +23,9 @@ namespace prng {
             int current_index = 0;
 
             while (number_of_bytes > 0) {
-                uint32_t generated_data = _generator->GetBits(_generator->param, _generator->state);
+                uint32_t generated_data = _generator->GetBits(_generator->param, _generator->state); // Get 4 Bytes from generator
 
-                for (auto i = 0; i < std::min<size_t>(number_of_bytes, 4); i--) {
-                    assert(current_index < number_of_bytes);
+                for (auto i = 0; i < std::min<size_t>(number_of_bytes, 4); i++) {
                     data[current_index++] = static_cast<std::uint8_t>(generated_data & 0xFF);
                     generated_data >>= 8;
                 }

@@ -6,6 +6,7 @@
 #define EACIRC_STREAMS_DUMMY_GENERATOR_H
 
 #include <streams/prngs/testu01-prngs/testu01_interface.h>
+#include <eacirc-core/json.h>
 
 extern "C" {
 #include <streams/prngs/testu01-prngs/includes/unif01.h>
