@@ -25,7 +25,7 @@ namespace prng {
     public:
         explicit ulcg_generator(const json& config) : ulcg_generator(config.at("m"), config.at("a"), config.at("c"), config.at("s")) {}
 
-        ulcg_generator(long m, long a, long c, long s) : uniform_generator_interface(ulcg_CreateLCG(m, a, c, s), ulcg_DeleteGen) {}
+        ulcg_generator(int32_t m, int32_t a, int32_t c, int32_t s) : uniform_generator_interface(ulcg_CreateLCG(m, a, c, s), ulcg_DeleteGen) {}
     };
 }
 

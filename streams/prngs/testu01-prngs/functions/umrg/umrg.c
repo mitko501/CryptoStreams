@@ -537,7 +537,8 @@ static unif01_Gen * CreateMRG_all (long m, int k, long AA[], long SS[])
 
    param->kind = MRG_ALL;
    param->M = m;
-   param->Norm = 1.0 / m;
+   // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization
+   param->Norm = 1.0 / unif01_NORM32;
    param->A = A;
    param->R = R;
    param->Q = Q;
@@ -619,7 +620,8 @@ unif01_Gen * umrg_CreateMRG (long m, int k, long A[], long S[])
       state = util_Malloc (sizeof (MRG2_state));
       param->kind = 2;
       param->M = m;
-      param->Norm = 1.0 / m;
+      // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization 
+      param->Norm = 1.0 / unif01_NORM32;
       param->a1 = A[0];
       param->r1 = R[0];
       param->q1 = Q[0];
@@ -644,7 +646,8 @@ unif01_Gen * umrg_CreateMRG (long m, int k, long A[], long S[])
       state = util_Malloc (sizeof (MRG3_state));
       param->kind = 3;
       param->M = m;
-      param->Norm = 1.0 / m;
+      // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization 
+      param->Norm = 1.0 / unif01_NORM32;
       param->a1 = A[0];
       param->r1 = R[0];
       param->q1 = Q[0];
@@ -671,7 +674,8 @@ unif01_Gen * umrg_CreateMRG (long m, int k, long A[], long S[])
       state = util_Malloc (sizeof (MRG5_state));
       param->kind = 5;
       param->M = m;
-      param->Norm = 1.0 / m;
+      // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization 
+      param->Norm = 1.0 / unif01_NORM32;
       param->a1 = A[0];
       param->r1 = R[0];
       param->q1 = Q[0];
@@ -700,7 +704,8 @@ unif01_Gen * umrg_CreateMRG (long m, int k, long A[], long S[])
       state = util_Malloc (sizeof (MRG7_state));
       param->kind = 7;
       param->M = m;
-      param->Norm = 1.0 / m;
+      // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization 
+      param->Norm = 1.0 / unif01_NORM32;
       param->a1 = A[0];
       param->r1 = R[0];
       param->q1 = Q[0];
@@ -869,7 +874,8 @@ unif01_Gen * umrg_CreateMRGFloat (long m, int k, long AA[], long SS[])
       util_Error ("umrg_CreateMRGFloat:   Condition on a_i not valid");
 
    param->M = m;
-   param->Norm = 1.0 / m;
+   // param->Norm = 1.0 / m; Removed by EACirc in order to be coinsistent with denormalization 
+   param->Norm = 1.0 / unif01_NORM32;
    param->A = A;
    state->k = k;
    state->S = S;

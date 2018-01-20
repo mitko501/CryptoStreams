@@ -13,18 +13,19 @@ add_library(testu01-prngs STATIC EXCLUDE_FROM_ALL
         testu01_generator.h
         testu01_interface.h
 
-        # unif01 functions
+        # unif01
         functions/unif01/unif01.c # unif01.h is basic header file needed for all geenrators so it is in include directory not here
         functions/unif01/dummy_generator.h
 
-        # ulcg functions
+        # ulcg
         functions/ulcg/ulcg.h
         functions/ulcg/ulcg.c
         functions/ulcg/ulcg_generator.h
 
-        # umrg functions
+        # umrg
         functions/umrg/umrg.h
         functions/umrg/umrg.c
+        functions/umrg/umrg_generator.h
         )
 
 target_link_libraries(testu01-prngs eacirc-core)
