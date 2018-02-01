@@ -7,6 +7,7 @@
 #include <streams/prngs/testu01-prngs/functions/ulcg/ulcg_generator.h>
 #include <streams/prngs/testu01-prngs/testu01_interface.h>
 #include <streams/prngs/testu01-prngs/functions/umrg/umrg_generator.h>
+#include <streams/prngs/testu01-prngs/functions/ucarry/ucarry_generator.h>
 
 
 TEST(LCG, basic_test) {
@@ -37,5 +38,26 @@ TEST(MRG, basic_test) {
         x_2 = temp;
 
         ASSERT_EQ(x_2, i);
+    }
+}
+
+TEST(CARRY, AWS) {
+    auto test = std::make_unique<prng::ucarry_AWS_generator>(1, 2, 0, INT32_MAX, std::vector<unsigned long>{1,1}.data()); // Fibonacci numbers
+    std::vector<uint32_t> data(40);
+    test->generate_bits(reinterpret_cast<uint8_t *>(data.data()), data.size() * 4);
+
+    uint32_t x_1 = 1;
+    uint32_t x_2 = 1;
+
+    uint32_t  temp = 0;
+
+    for (auto i : data) {
+        temp = x_1 + x_2;
+        x_1 = x_2;
+        x_2 = temp;
+
+        //ASSERT_EQ(x_2, i);
+
+        std::cout << i << std::endl;
     }
 }

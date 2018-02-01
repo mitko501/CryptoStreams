@@ -26,6 +26,11 @@ add_library(testu01-prngs STATIC EXCLUDE_FROM_ALL
         functions/umrg/umrg.h
         functions/umrg/umrg.c
         functions/umrg/umrg_generator.h
+
+        # ucarry
+        functions/ucarry/ucarry.h
+        functions/ucarry/ucarry.c
+        functions/ucarry/ucarry_generator.h
         )
 
 target_link_libraries(testu01-prngs eacirc-core)
