@@ -16,6 +16,10 @@ namespace prng {
 
     /**
      * Generators based on linear recurrences with carry (http://www.iro.umontreal.ca/~simardr/testu01/guideshorttestu01.pdf on page 31)
+     */
+
+    /**
+     * AWS generator ( add-with-carry )
      *
      * x_i = (x_(i−r) + x_(i−s) + c_(i−1)) mod m
      * c_i = (x_(i−r) + x_(i−s) + c_(i−1)) div m
@@ -27,6 +31,19 @@ namespace prng {
         explicit ucarry_AWS_generator(const json& config) : ucarry_AWS_generator(config.at("r"), config.at("s"), config.at("c"), config.at("m"), config.at("s").get<std::vector<unsigned long>>().data()) {}
 
         ucarry_AWS_generator(uint32_t r, uint32_t s, uint32_t c, uint32_t m, unsigned long* S) : uniform_generator_interface(ucarry_CreateAWC(r, s, c, m, S), ucarry_DeleteAWC) {}
+    };
+
+    /**
+     * SWB generator ( substract-with-borrow )
+     *
+     * x_i = (x_(i−r) − x_(i−s) − c_(i−1)) mod m
+     * c_i = I[(x_(i−r) − x_(i−s) − c_(i−1)) < 0]
+     */
+    class ucarry_SWB_generator : public uniform_generator_interface {
+    public:
+        explicit ucarry_SWB_generator(const json& config) : ucarry_SWB_generator(config.at("r"), config.at("s"), config.at("c"), config.at("m"), config.at("s").get<std::vector<unsigned long>>().data()) {}
+
+        ucarry_SWB_generator(uint32_t r, uint32_t s, uint32_t c, uint32_t m, unsigned long* S) : uniform_generator_interface(ucarry_CreateSWB(r, s, c, m, S), ucarry_DeleteSWB) {}
     };
 }
 
