@@ -113,3 +113,61 @@ TEST(shacal2, test_vectors) {
 TEST(xtea, test_vectors) {
     testsuite::block_test_case("XTEA", 32)();
 }
+
+TEST(chaskey, test_vectors) {
+    testsuite::block_test_case("CHASKEY", 8)();
+    testsuite::block_test_case("CHASKEY", 16)();
+}
+
+TEST(fantomas, test_vectors) {
+    testsuite::block_test_case("FANTOMAS", 12)();
+}
+
+TEST(hight, test_vectors) {
+    testsuite::block_test_case("HIGHT", 32)();
+}
+
+TEST(lblock, test_vectors) {
+    testsuite::block_test_case("LBLOCK", 32)();
+}
+
+TEST(lea, test_vectors) {
+    testsuite::block_test_case("LEA", 24)();
+}
+
+TEST(led, test_vectors) {
+    testsuite::block_test_case("LED", 48)();
+}
+
+TEST(piccolo, test_vectors) {
+    testsuite::block_test_case("PICCOLO", 25)();
+}
+
+TEST(pride, test_vectors) {
+    testsuite::block_test_case("PRIDE", 20)();
+}
+
+TEST(prince, test_vectors) {
+    testsuite::block_test_case("PRINCE", 12)();
+}
+
+TEST(rc5_20, test_vectors) {
+    testsuite::block_test_case("RC5-20", 20)();
+}
+
+TEST(rectangle, test_vectors) {
+    testsuite::block_test_case("RECTANGLE", 25)();
+}
+
+TEST(road_runner, test_vectors) {
+    testsuite::block_test_case("ROAD-RUNNER", 12)();
+    testsuite::block_test_case("ROAD-RUNNER", 10)();
+}
+
+TEST(sparx, test_vectors) {
+    testsuite::block_test_case("SPARX", 8)();
+}
+
+TEST(twine, test_vectors) {
+    testsuite::block_test_case("TWINE", 35)();
+}

@@ -33,6 +33,30 @@ std::unique_ptr<block_cipher> make_block_cipher(const std::string &name,
     if (name == "NOEKEON") return std::make_unique<noekeon_factory>(round);
     if (name == "SHACAL2") return std::make_unique<shacal2_factory>(round);
     if (name == "XTEA") return std::make_unique<xtea_factory>(round);
+    if (name == "CHASKEY") return std::make_unique<chaskey>(round);
+    if (name == "FANTOMAS") return std::make_unique<fantomas>(round);
+    if (name == "HIGHT") return std::make_unique<hight>(round);
+    if (name == "LBLOCK") return std::make_unique<lblock>(round);
+    if (name == "LEA") return std::make_unique<lea>(round);
+    if (name == "LED") return std::make_unique<led>(round);
+    if (name == "PICCOLO") return std::make_unique<piccolo>(round);
+    if (name == "PRIDE") return std::make_unique<pride>(round, encrypt);
+    if (name == "PRINCE") return std::make_unique<prince>(round);
+    if (name == "RC5-20") return std::make_unique<rc5_20>(round);
+    if (name == "RECTANGLE") return std::make_unique<rectangle>(round);
+    if (name == "ROAD-RUNNER") {
+        if (key_size == 10) {
+            return std::make_unique<road_runner80>(round, encrypt);
+        } else return std::make_unique<road_runner128>(round, encrypt);
+    }
+    if (name == "ROBIN") return std::make_unique<robin>(round);
+    if (name == "ROBIN-STAR") return std::make_unique<robin_star>(round);
+    if (name == "SPARX") {
+        if (block_size == 8) {
+            return std::make_unique<sparx64>(round);
+        } else return std::make_unique<sparx128>(round);
+    }
+    if (name == "TWINE") return std::make_unique<twine>(round);
     // clang-format on
 
     throw std::runtime_error("requested block cipher named \"" + name +
